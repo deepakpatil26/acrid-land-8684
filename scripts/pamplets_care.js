@@ -1,37 +1,37 @@
-let display=(data,place)=>{
-    data.forEach((el)=>{
-        let div=document.createElement("div")
-        div.setAttribute("class","tamplate")
-        let pic=document.createElement("img")
-        pic.src=el.image
-        let div1=document.createElement("div")
-        div1.setAttribute("class","mrp")
-        let p1=document.createElement("p")
-        p1.innerText="Price"
-        let p2=document.createElement("p")
-        p2.innerText=el.price
-        p2.style.textDecoration="line-through"
-        div1.append(p1,p2)
-        let div2=document.createElement("div")
-        div2.setAttribute("class","offers")
-        let p3=document.createElement("p")
-        p3.innerText="Price"
-        let p4=document.createElement("h3")
-        p4.innerText=`₹ ${el.offer}`
-        div2.append(p3,p4)
-        div.append(pic,div1,div2)
-        div.addEventListener("click",()=>{
-            localStorage.setItem("care-product",JSON.stringify(el))
-            window.location.href="../html/care-subpage.html"
-        })
-       div.addEventListener("mousemove",()=>{
-        div.style.cursor="pointer"
-       })
-        document.getElementById(place).append(div)
-    })
-    }
-    function paragraph(){
-        return ` <div id="paragraph">
+let display = (data, place) => {
+  data.forEach((el) => {
+    let div = document.createElement("div");
+    div.setAttribute("class", "tamplate");
+    let pic = document.createElement("img");
+    pic.src = el.image;
+    let div1 = document.createElement("div");
+    div1.setAttribute("class", "mrp");
+    let p1 = document.createElement("p");
+    p1.innerText = "Price";
+    let p2 = document.createElement("p");
+    p2.innerText = el.price;
+    p2.style.textDecoration = "line-through";
+    div1.append(p1, p2);
+    let div2 = document.createElement("div");
+    div2.setAttribute("class", "offers");
+    let p3 = document.createElement("p");
+    p3.innerText = "Price";
+    let p4 = document.createElement("h3");
+    p4.innerText = `₹ ${el.offer}`;
+    div2.append(p3, p4);
+    div.append(pic, div1, div2);
+    div.addEventListener("click", () => {
+      localStorage.setItem("care-product", JSON.stringify(el));
+      window.location.href = "../html/care-subpage.html";
+    });
+    div.addEventListener("mousemove", () => {
+      div.style.cursor = "pointer";
+    });
+    document.getElementById(place).append(div);
+  });
+};
+function paragraph() {
+  return ` <div id="paragraph">
         <div>
             <h5>Lab tests At home</h5>
             <p>Lab tests are essential not just to help the doctor detect a condition or a disease, but are also important to plan the treatment, monitor its efficacy, and switch it if it is not helping you the way it should. They may be advised by the doctor to detect certain specific conditions or as a part of a routine checkup. Until a few years ago, getting lab tests to check the samples of our blood, tissue, or urine to get a diagnosis of diseases or other conditions used to be done at hospitals or clinics. This used to have its own share of stress, costs, and other concerns. However, due to several innovations in diagnostic healthcare, things like telemedicine and home diagnostic tests are a reality. Home testing services have been possible due to the advancements in laboratory technology, growth and penetration of the internet, the birth of inventive health-tech startups, and the fact that people are becoming more cognizant of their health and ordering these tests and health checkup at home. Not only are these lab tests at home simple, systematic, have a quick turnaround time, but also 100 percent accurate. Depending on the service that you choose, home diagnostic tests can be done at ourselves at home or by experienced phlebotomists who come to collect the samples at home.</p>
@@ -59,6 +59,6 @@ let display=(data,place)=>{
             <p>Sambar Recipe | Masala For Dosa | Kadai Paneer Recipe | Mattar Paneer Recipe | Manchow Soup | Egg Curry | Chilli Baby Corn | Homemade Protein Powder | Veg Thukpa | Double Ka Meetha</p>
             <h5>Gyms In India</h5>
             <p>Gyms In Delhi | Gyms In Mumbai | Gyms In Bangalore | Gyms In Pune | Gyms In Chennai | Gyms In Hyderabad | Gyms In Jaipur | Gyms In Kolkata | Gyms In Ahmedabad | Gyms In Chandigarh | Gyms In Indore | Gyms In Coimbatore | Gyms In Surat | Gyms In Ludhiana | Gyms In Vizag | Gyms In Amritsar | Gyms In Mysore | Gyms In Mangalore | Gyms In Kochi | Gyms In Jammu | Gym In Kharghar | Gym In Bandra | Gym In Velachery | Gym In Chembur | Gym In Indiranagar | Gym In HSR Layout</p>
-        </div>`
-    }
-    export {display,paragraph}
+        </div>`;
+}
+export { display, paragraph };

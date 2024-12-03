@@ -18,13 +18,13 @@ More than just a website - a digital ecosystem designed to revolutionize persona
 
 ### 👥 Dream Team
 
-| Student ID | Name |
-|-----------|------|
-| fw18_0643 | Karishma Gupta |
-| fw19_0693 | Aakash Indoriya |
-| - | Abhinandan Saraswat |
-| - | Danish Pinjari |
-| fw19_0456 | Deepak Patil |
+| Student ID | Name                |
+| ---------- | ------------------- |
+| fw18_0643  | Karishma Gupta      |
+| fw19_0693  | Aakash Indoriya     |
+| -          | Abhinandan Saraswat |
+| -          | Danish Pinjari      |
+| fw19_0456  | Deepak Patil        |
 
 ### 🌐 Project Context
 **Inspiration**: Cult. fit - India's leading health and fitness digital platform

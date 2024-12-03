@@ -1,5 +1,5 @@
-function cart(){
-    return `<div id="CartSection">
+function cart() {
+  return `<div id="CartSection">
     <div id="">
       <div class="CartPage">
      
@@ -19,7 +19,7 @@ function cart(){
         />
       </div>
     </div>
-  </div>`
+  </div>`;
 }
 // --------------------
-export{cart}
+export { cart };
