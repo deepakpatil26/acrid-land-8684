@@ -28,3 +28,19 @@ document.getElementById("para").innerHTML = paragraph();
 window.onload = getLocation();
 import { footer } from "../componants/footer.js";
 document.getElementById("footer").innerHTML = footer();
+
+let count = 0;
+function fun(id) {
+  if (count % 2 == 0) {
+    let pic = document.getElementById(id);
+    pic.style.transform = "rotate(180deg)";
+    let ans = document.getElementById(`ans${id}`);
+    ans.style.display = "inherit";
+  } else {
+    let pic = document.getElementById(id);
+    pic.style.transform = "rotate(0deg)";
+    let ans = document.getElementById(`ans${id}`);
+    ans.style.display = "none";
+  }
+  count++;
+}
