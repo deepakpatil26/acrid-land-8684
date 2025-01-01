@@ -1,5 +1,5 @@
 function footer() {
-  return `   <div id="Nikfooter">
+    return `   <div id="Nikfooter">
     <div id="footerd1">
         <img id="footerd1I" src="https://static.cure.fit/assets/images/cult-logo-white.svg" alt="">
         <p id="footerd1P">At cult.fit, we make group workouts fun, daily food healthy & tasty, mental fitness easy
