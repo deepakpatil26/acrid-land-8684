@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aakashindoriya/acrid-land-8684.git"
+    "url": "git+https://github.com/deepakpatil26/acrid-land-8684.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/aakashindoriya/acrid-land-8684/issues"
+    "url": "https://github.com/deepakpatil26/acrid-land-8684/issues"
   },
-  "homepage": "https://github.com/aakashindoriya/acrid-land-8684#readme",
+  "homepage": "https://github.com/deepakpatil26/acrid-land-8684#readme",
   "dependencies": {
     "json-server": "^0.17.0"
   }

@@ -1,111 +1,227 @@
-#navbar {
-  margin: 0%;
+/* Reset some defaults */
+* {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-#navbar {
-  display: flex;
-  height: 60px;
-  background-color: #15171c;
-  justify-content: space-between;
-  padding: 13px;
-  position: sticky;
-  top: 0%;
-}
+
 body {
   background-color: #15171c;
 }
 
-#navbar + div {
-  background-color: grey;
+/* Navbar styles */
+#navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  background-color: #15171c;
+  padding: 13px 4vw;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
 
-  margin: auto;
-  width: 30%;
-  text-align: center;
+/* Logo */
+#logo img {
+  height: 40px;
+  width: auto;
 }
-#navbar + div > h1 {
-  font-size: 100px;
-}
-#navbar + div button {
-  width: 200px;
-  height: 80px;
-  border-radius: 20px;
-  font-size: 30px;
-  background-color: rgb(246, 138, 130);
-  border: 0px;
-  color: white;
-}
-#navbar + div button:hover {
-  color: #15171c;
-  cursor: pointer;
-}
+
+/* Pages navigation */
 #pages {
   display: flex;
-  width: 30%;
-  justify-content: space-between;
+  gap: 2vw;
   align-items: center;
 }
-#navbar img {
-  height: 100%;
-}
+
 #pages a {
   text-decoration: none;
-  font-size: 15px;
-  line-height: 1.42857143;
+  font-size: 1rem;
   color: rgb(199, 193, 193);
+  transition: color 0.2s;
 }
+
+#navbar a h3 {
+  transition: color 0.2s, border-bottom 0.2s;
+  border-bottom: 2px solid transparent;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+#navbar a:hover h3 {
+  color: #f4c51a;
+  border-bottom: 2px solid #f4c51a;
+}
+
+/* Functions (right side) */
 #functions {
   display: flex;
-  width: 22%;
-  justify-content: space-between;
   align-items: center;
+  gap: 1vw;
+  flex-wrap: wrap;
 }
-#functions > button {
-  height: 100%;
-  border: 1px solid white;
-  background-color: #15171c;
-  color: white;
-  border-radius: 5%;
-}
-#navbar a:hover {
-  color: white;
-  font-size: 16px;
-}
+
 #functions > div {
-  background-color: #15171c;
   display: flex;
-  height: 100%;
-  width: 30%;
-  justify-content: space-between;
+  align-items: center;
+  background-color: #15171c;
+  padding: 0 8px;
+  border-radius: 8px;
+  transition: background 0.2s;
 }
-#location {
-  font-size: 20px;
-  color: white;
-  text-align: center;
-  margin-top: 4px;
-  text-transform: uppercase;
-}
+
 #functions > div:hover {
   background-color: #33363f;
 }
-#video {
-  width: 500px;
-  margin: auto;
-  margin-top: 30px;
-  text-align: center;
-}
-video {
-  border-radius: 20px;
-}
-#video > button {
-  width: 200px;
-  height: 80px;
-  background-color: coral;
+
+#location {
+  font-size: 0.95rem;
   color: white;
-  border-radius: 20px;
+  text-align: center;
+  margin-right: 6px;
+  text-transform: uppercase;
 }
-#video > button:hover {
-  width: 210px;
-  height: 90px;
+
+#functions img {
+  height: 26px;
+  width: 26px;
+  object-fit: contain;
+  margin-left: 6px;
+}
+
+#functions > button {
+  background: #f4c51a;
+  color: #222;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+#functions > button:hover {
+  background: #222;
+  color: #f4c51a;
+}
+
+/* Profile and cart icons */
+#functions > a img,
+#functions > #toggle {
+  margin-left: 10px;
+  height: 26px;
+  width: 26px;
   cursor: pointer;
 }
-/* ------------------------------------------------------------------------- */
+
+/* Responsive styles */
+@media (max-width: 900px) {
+  #navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 10px 2vw;
+    gap: 10px;
+  }
+  #pages {
+    gap: 4vw;
+  }
+  #functions {
+    gap: 2vw;
+    width: 100%;
+    justify-content: flex-end;
+    margin-top: 8px;
+  }
+}
+
+@media (max-width: 700px) {
+  #navbar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 10px 2vw;
+    gap: 10px;
+  }
+  #logo img {
+    height: 32px;
+  }
+  #pages {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 6vw;
+    margin-top: 8px;
+    flex-wrap: wrap;
+  }
+  #pages a h3 {
+    font-size: 0.95rem;
+  }
+  #functions {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 4vw;
+    margin-top: 8px;
+    flex-wrap: wrap;
+  }
+  #functions > button {
+    padding: 7px 14px;
+    font-size: 0.95rem;
+  }
+  #functions img,
+  #functions > a img,
+  #functions > #toggle {
+    height: 22px;
+    width: 22px;
+    margin-left: 6px;
+  }
+  #functions > div {
+    padding: 0 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  #navbar {
+    padding: 8px 1vw;
+    gap: 8px;
+  }
+  #logo img {
+    height: 26px;
+  }
+  #pages {
+    gap: 4vw;
+    margin-top: 6px;
+  }
+  #functions {
+    gap: 2vw;
+    margin-top: 6px;
+  }
+  #functions > button {
+    padding: 6px 10px;
+    font-size: 0.9rem;
+  }
+  #functions img,
+  #functions > a img,
+  #functions > #toggle {
+    height: 18px;
+    width: 18px;
+    margin-left: 4px;
+  }
+  #functions > div {
+    padding: 0 2px;
+  }
+  #location {
+    font-size: 0.8rem;
+    margin-right: 4px;
+  }
+}
+
+/* Card hover effect (keep as is) */
+.kEliteCard,
+.bigcart_hover {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.kEliteCard:hover,
+.bigcart_hover:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}

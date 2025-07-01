@@ -120,18 +120,26 @@ More than just a website - a digital ecosystem designed to revolutionize persona
 
 1. 🍴 **Fork the Repository**
 2. 🌿 **Create Feature Branch**
+
    ```bash
    git checkout -b feature/WellnessEnhancement
    ```
+
 3. 💾 **Commit Changes**
+
    ```bash
    git commit -m 'Add wellness feature'
    ```
+
 4. 📤 **Push to Branch**
+
    ```bash
    git push origin feature/WellnessEnhancement
    ```
+
 5. 🔀 **Open Pull Request**
+   - Describe your changes
+   - Link to relevant issues
 
 ---
 
@@ -148,15 +156,11 @@ More than just a website - a digital ecosystem designed to revolutionize persona
 
 Developed in just 5 intense days, this project represents a collaborative journey of innovation, learning, and passion for digital health solutions.
 
-**Fitness Meets Technology! 💪🚀**
+### Fitness Meets Technology! 💪🚀
 
 ---
 
-## 📜 License
-
-[Insert Appropriate License Here]
-
-**Crafted with ❤️ by Wellness Innovators**
+### Crafted with ❤️ by Wellness Innovators
 
 ## 📞 Connect With Us
 
@@ -166,4 +170,4 @@ Reach out to:
 - Karishma Gupta
 - Project Team
 
-_Empowering Wellness, One Code at a Time_
+### Empowering Wellness, One Code at a Time
