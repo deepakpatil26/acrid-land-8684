@@ -1,539 +1,642 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Transform your fitness journey with unlimited access to gyms, group classes, and at-home workouts." />
+    <title>Fitness - Cult.fit Clone</title>
+    <script src="https://kit.fontawesome.com/1f916cae0d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="../css/fitness.css" />
+    <link rel="stylesheet" href="../css/navbar.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fitness</title>
-  <link rel="stylesheet" href="../css/navbar.css" />
-  <link rel="stylesheet" href="../css/fitness.css" />
-  <link rel="stylesheet" href="../css/footer.css" />
-</head>
+  <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+      <div class="loader">
+        <div class="cult-logo">
+          <img src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_120,ar_3.87,q_auto:eco,dpr_2,f_auto,fl_progressive//image/test/brand-logo/vman-and-white-cult-text.png" alt="Cult.fit">
+        </div>
+        <div class="loading-text">Preparing Your Fitness Journey...</div>
+        <div class="progress-bar">
+          <div class="progress"></div>
+        </div>
+      </div>
+    </div>
 
-<body>
-  <div id="navbar"></div>
-  <div id="first">
-    <img
-      src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_1600,ar_1.67,q_auto:eco,dpr_2,f_auto,fl_progressive/image/vm/488bf95c-54e5-498c-bd4b-d6db6fe1d1d2.png"
-      alt="first_image" />
-  </div>
-  <div id="second"></div>
-  <div id="third_mother">
-    <div id="third">
-      <div id="third_1">
-        <h1>FLASH SALE | ONLY TODAY</h1>
-        <h4>
-          Free ₹2000 Puma voucher + Extra 3 months extension | On CULT pass
-          ELITE
-        </h4>
-      </div>
-      <div class="timer">
-        <h2>-------- Ends in--------</h2>
-        <h1 id="demo"></h1>
-      </div>
-    </div>
-  </div>
-  <div class="mapouter">
-    <div class="gmap_canvas">
-      <h1>Centers Near Me</h1>
-      <iframe width="500" height="500" id="gmap_canvas" frameborder="0" scrolling="no" marginheight="0"
-        marginwidth="0"></iframe>
-    </div>
-  </div>
-  <div id="prefourth">
-    <h2>AT CENTER</h2>
-    <h1>Trainer-led group classes</h1>
-  </div>
+    <!-- Enhanced Navbar -->
+    <div id="navbar"></div>
 
-  <div id="fourth">
-    <img
-      src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_300,ar_0.75,q_auto:eco,dpr_2,f_auto,fl_progressive//image/vm/8009b1d0-4f5e-49e1-bc94-c41da6a5bcc1.png"
-      alt="" />
-    <img
-      src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_300,ar_0.75,q_auto:eco,dpr_2,f_auto,fl_progressive//image/vm/7bf136db-7217-4733-af9f-1bb8a4155a83.png"
-      alt="" />
-    <img
-      src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_300,ar_0.75,q_auto:eco,dpr_2,f_auto,fl_progressive//image/vm/7edc94fb-e895-4065-8e56-dabffdd4e4b0.png"
-      alt="" />
-    <img
-      src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_300,ar_0.75,q_auto:eco,dpr_2,f_auto,fl_progressive//image/vm/09e63111-d407-4d09-89e5-96d978edf2b1.png"
-      alt="" />
-  </div>
-  <div id="prefifth">
-    <h2>AT HOME</h2>
-    <h1>Live group workouts with calorie tracking</h1>
-  </div>
+    <!-- Hero Section -->
+    <div id="hero-section">
+      <div class="hero-background">
+        <img id="hero-image" src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_1600,ar_1.67,q_auto:eco,dpr_2,f_auto,fl_progressive/image/vm/488bf95c-54e5-498c-bd4b-d6db6fe1d1d2.png" alt="Fitness Hero" />
+        <div class="hero-overlay"></div>
+      </div>
+      
+      <div class="hero-content">
+        <div class="hero-text" data-aos="fade-up">
+          <h1>Transform Your Body,<br><span class="gradient-text">Transform Your Life</span></h1>
+          <p>Join millions in their fitness journey with expert trainers, state-of-the-art equipment, and unlimited access to premium gyms.</p>
+          <div class="hero-cta">
+            <button class="primary-cta" onclick="scrollToPlans()">
+              <span>Start Your Journey</span>
+              <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="secondary-cta" onclick="openWorkoutModal()">
+              <i class="fas fa-play"></i>
+              <span>Watch Demo</span>
+            </button>
+          </div>
+        </div>
+        
+        <div class="hero-stats" data-aos="fade-up" data-aos-delay="300">
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-users"></i></div>
+            <div class="stat-number" data-target="1000000">0</div>
+            <div class="stat-label">Active Members</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-dumbbell"></i></div>
+            <div class="stat-number" data-target="500">0</div>
+            <div class="stat-label">Expert Trainers</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="stat-number" data-target="50">0</div>
+            <div class="stat-label">Cities</div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <div id="fifth">
-    <div>
-      <img
-        src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_400,ar_1.77,q_auto:eco,dpr_1,f_auto,fl_progressive//image/diy/8fbbed5b-37b2-458a-8cd0-775ad5ef1f59" />
-      <p>Rahul S</p>
-      <h2>Cardio HIIT</h2>
-      <h3>CARDIO.BEGINNER.30min</h3>
-    </div>
-    <div>
-      <img
-        src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_400,ar_1.77,q_auto:eco,dpr_1,f_auto,fl_progressive//image/diy/d3783553-6808-4968-ae60-6882667380e1" />
-      <p>Nandini S</p>
-      <h2>Dance Fitness Xpress</h2>
-      <h3>DANCE.BEGINNER.30min</h3>
-    </div>
-    <div>
-      <img
-        src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_400,ar_1.77,q_auto:eco,dpr_1,f_auto,fl_progressive//image/diy/bd02c2f4-bc74-4868-bd93-0590e35b8c14" />
-      <p>Carolyn S</p>
-      <h2>Hatha Yoga for Beginners</h2>
-      <h3>YOGA.BEGINNER.35min</h3>
-    </div>
-  </div>
-  <div id="presixth">
-    <h1>Choose your cultpass</h1>
-    <h3>3 flexible plan to suit your fitness needs</h3>
-  </div>
-  <div id="sixth">
-    <table>
-      <thead>
-        <th></th>
-        <th>
-          <img
-            src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_89,ar_3.59,q_auto:eco,dpr_1,f_auto,fl_progressive//image/test/brand-logo/cult-pass-elite-partial.png" />
-        </th>
-        <th>
-          <img
-            src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_65,ar_2.63,q_auto:eco,dpr_1,f_auto,fl_progressive//image/test/brand-logo/cult-pass-pro-partial.png" />
-        </th>
-        <th>
-          <img
-            src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_71,ar_2.86,q_auto:eco,dpr_1,f_auto,fl_progressive//image/test/brand-logo/cult-pass-live-partial-4x.png" />
-        </th>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <h3>ELITE Gyms At Centre Group Classes</h3>
-          </td>
-          <td>
-            <img
-              src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_20,ar_1,q_auto:eco,dpr_1,f_auto,fl_progressive/image/test/icons/blue-tick-circle.png"
-              alt="" />
-            <p>Unlimited</p>
-          </td>
-          <td>
-            <p>04 Sessions/month</p>
-          </td>
-          <td class="td">
-            <img
-              src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_20,ar_1,q_auto:eco,dpr_1,f_auto,fl_progressive/image/test/icons/opaque-white-circle-cross-4.svg" />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <h3>PRO Gyms</h3>
-          </td>
-          <td>
-            <img
-              src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_20,ar_1,q_auto:eco,dpr_1,f_auto,fl_progressive/image/test/icons/blue-tick-circle.png"
-              alt="" />
-            <p>Unlimited</p>
-          </td>
-          <td>
-            <img
-              src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_20,ar_1,q_auto:eco,dpr_1,f_auto,fl_progressive/image/test/icons/blue-tick-circle.png"
-              alt="" />
-            <p>Unlimited</p>
-          </td>
-          <td class="td">
-            <img
-              src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_20,ar_1,q_auto:eco,dpr_1,f_auto,fl_progressive/image/test/icons/opaque-white-circle-cross-4.svg" />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <h3>Smart workout plan</h3>
-          </td>
-          <td>
-            <img
-              src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_20,ar_1,q_auto:eco,dpr_1,f_auto,fl_progressive/image/test/icons/blue-tick-circle.png"
-              alt="" />
-            <p>Unlimited</p>
-          </td>
-          <td>
-            <img
-              src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_20,ar_1,q_auto:eco,dpr_1,f_auto,fl_progressive/image/test/icons/blue-tick-circle.png"
-              alt="" />
-            <p>Unlimited</p>
-          </td>
-          <td class="td">
-            <img
-              src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_20,ar_1,q_auto:eco,dpr_1,f_auto,fl_progressive/image/test/icons/opaque-white-circle-cross-4.svg" />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <h3>At home workouts</h3>
-          </td>
-          <td>
-            <img
-              src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_20,ar_1,q_auto:eco,dpr_1,f_auto,fl_progressive/image/test/icons/blue-tick-circle.png"
-              alt="" />
-            <p>Unlimited</p>
-          </td>
-          <td>
-            <img
-              src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_20,ar_1,q_auto:eco,dpr_1,f_auto,fl_progressive/image/test/icons/blue-tick-circle.png"
-              alt="" />
-            <p>Unlimited</p>
-          </td>
-          <td class="td">
-            <img
-              src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_20,ar_1,q_auto:eco,dpr_1,f_auto,fl_progressive/image/test/icons/blue-tick-circle.png"
-              alt="" />
-            <p>Unlimited</p>
-          </td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>
-            Starting at ₹1178/month
-            <a href="buyNow.html" style="text-decoration: none">
-              <button style="color: crimson">Buy Now</button></a>
-          </td>
-          <td>
-            Starting at ₹999/month
-            <a href="buyNow.html" style="text-decoration: none">
-              <button style="color: crimson">Buy Now</button></a>
-          </td>
-          <td class="td">
-            Starting at ₹115/month
-            <a href="buyNow.html" style="text-decoration: none">
-              <button style="color: crimson">Buy Now</button></a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div id="preseventh">
-    <h1>FREE TRIALS</h1>
-  </div>
+    <!-- Membership Plans Section -->
+    <div id="membership-plans" class="section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <h2>Choose Your <span class="gradient-text">Fitness Plan</span></h2>
+          <p>Flexible memberships designed for every fitness goal and lifestyle</p>
+        </div>
 
-  <div id="seventh">
-    <img
-      src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_300,ar_0.75,q_auto:eco,dpr_2,f_auto,fl_progressive/image/vm/22ae2a86-60e9-4de3-9180-678f40b69eb0.png"
-      alt="" />
-    <img
-      src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_300,ar_0.75,q_auto:eco,dpr_2,f_auto,fl_progressive/image/vm/2ce1e296-e894-4f65-9dc1-d6ed11c031ae.png"
-      alt="" />
-    <img
-      src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_300,ar_0.75,q_auto:eco,dpr_2,f_auto,fl_progressive/image/vm/1300abe0-318e-489c-8205-dc770cfe6e54.png"
-      alt="" />
-  </div>
-  <div id="eighth">
-    <div>
-      <img
-        src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_294,ar_6.55,q_auto:eco,dpr_2,f_auto,fl_progressive//image/test/brand-logo/cult-pass-elite.png"
-        alt="" />
-      <h1>Unlimited access to everything in your city</h1>
-      <h3>Unlimited access to</h3>
-      <div>
-        <img src="https://static.cure.fit/assets/images/orangeTick.png" alt="" />
-        <p>At-center group classes</p>
-      </div>
-      <div>
-        <img src="https://static.cure.fit/assets/images/orangeTick.png" alt="" />
-        <p>All ELITE and PRO gyms</p>
-      </div>
-      <div>
-        <img src="https://static.cure.fit/assets/images/orangeTick.png" alt="" />
-        <p>At-home live workouts</p>
-      </div>
-      <p>Starting at ₹1178/month</p>
-      <a href="buyNow.html" style="text-decoration: none">
-        <button style="color: crimson">Buy Now</button></a>
-      <div>
-        <img
-          src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_27,ar_0.96,q_auto:eco,dpr_2,f_auto,fl_progressive/image/test/sku-card-widget/offer.png"
-          alt="" />
-        <p>SALE ON NOW</p>
-      </div>
-    </div>
-    <div id="subeighth"></div>
-  </div>
-  <div id="ninth">
-    <div id="subninth"></div>
-    <div>
-      <img
-        src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_262,ar_5.84,q_auto:eco,dpr_1,f_auto,fl_progressive//image/test/brand-logo/cult-pass-pro.png"
-        alt="" />
-      <h1>Unlimited access to PRO gyms in your city</h1>
-      <h3>Unlimited access to</h3>
-      <div>
-        <img src="https://static.cure.fit/assets/images/orangeTick.png" alt="" />
-        <p>All PRO gyms</p>
-      </div>
-      <div>
-        <img src="https://static.cure.fit/assets/images/orangeTick.png" alt="" />
-        <p>At-home live workouts</p>
-      </div>
-      <div>
-        <img src="https://static.cure.fit/assets/images/orangeTick.png" alt="" />
-        <p>$ sessions/month at ELITE gyms & group classes</p>
-      </div>
-      <p>Starting at ₹1178/month</p>
-      <a href="buyNow.html" style="text-decoration: none">
-        <button style="color: crimson">Buy Now</button></a>
-      <div>
-        <img
-          src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_27,ar_0.96,q_auto:eco,dpr_2,f_auto,fl_progressive/image/test/sku-card-widget/offer.png"
-          alt="" />
-        <p>SALE ON NOW</p>
-      </div>
-    </div>
-  </div>
-  <div id="tenth">
-    <img
-      src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_218,ar_4.852,q_auto:eco,dpr_2,f_auto,fl_progressive//image/test/brand-logo/cult-pass-live.png"
-      alt="" />
-    <h1>Bring Gym Home</h1>
-    <h4>Unlimited access to</h4>
-    <div>
-      <img src="https://static.cure.fit/assets/images/orangeTick.png" alt="" />
-      <p>At home workouts</p>
-    </div>
-    <div>
-      <img src="https://static.cure.fit/assets/images/orangeTick.png" alt="" />
-      <p>Celebrity workouts</p>
-    </div>
-    <div>
-      <img src="https://static.cure.fit/assets/images/orangeTick.png" alt="" />
-      <p>Goal based workouts & meditation session</p>
-    </div>
-    <a href="buyNow.html" style="text-decoration: none">
-      <button style="color: crimson">Buy Now</button></a>
-    <div>
-      <img
-        src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_27,ar_0.96,q_auto:eco,dpr_2,f_auto,fl_progressive/image/test/sku-card-widget/offer.png"
-        alt="" />
-      <p>SALE ON NOW</p>
-    </div>
-    <!-- //` -->
-  </div>
-  <div id="eleventh">
-    <img
-      src="https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_1440,ar_1738:763/dpr_2/image/vm/a5077452-0ba1-469f-a9ab-3eb6429de7c2.png"
-      alt="" />
-  </div>
-  <div id="twelfth">
-    <h3>CULT COMMUNITY</h3>
-    <h2>Be a part of the cult community</h2>
-    <h3>Join the Facebook community today</h3>
-    <a style="text-decoration: none" href="https://www.facebook.com/cultfitofficial">
-      <h4>JOIN NOW</h4>
-    </a>
-  </div>
-  <div id="footer"></div>
-</body>
+        <div class="plans-grid" data-aos="fade-up" data-aos-delay="200">
+          <div class="plan-card elite" data-plan="elite">
+            <div class="plan-badge">Most Popular</div>
+            <div class="plan-header">
+              <div class="plan-icon"><i class="fas fa-crown"></i></div>
+              <h3>CULT PASS</h3>
+              <h2>ELITE</h2>
+            </div>
+            <div class="plan-price">
+              <span class="currency">₹</span>
+              <span class="amount">1,178</span>
+              <span class="period">/month</span>
+            </div>
+            <div class="plan-features">
+              <div class="feature">
+                <i class="fas fa-check"></i>
+                <span>Unlimited access to all ELITE & PRO gyms</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-check"></i>
+                <span>Unlimited group classes</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-check"></i>
+                <span>At-home live workouts</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-check"></i>
+                <span>Personal training sessions</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-check"></i>
+                <span>Nutrition consultation</span>
+              </div>
+            </div>
+            <button class="plan-cta">Choose Elite</button>
+          </div>
 
+          <div class="plan-card pro" data-plan="pro">
+            <div class="plan-header">
+              <div class="plan-icon"><i class="fas fa-dumbbell"></i></div>
+              <h3>CULT PASS</h3>
+              <h2>PRO</h2>
+            </div>
+            <div class="plan-price">
+              <span class="currency">₹</span>
+              <span class="amount">999</span>
+              <span class="period">/month</span>
+            </div>
+            <div class="plan-features">
+              <div class="feature">
+                <i class="fas fa-check"></i>
+                <span>Unlimited access to all PRO gyms</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-check"></i>
+                <span>4 sessions/month at ELITE gyms</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-check"></i>
+                <span>At-home live workouts</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-check"></i>
+                <span>Basic nutrition guidance</span>
+              </div>
+            </div>
+            <button class="plan-cta">Choose Pro</button>
+          </div>
+
+          <div class="plan-card live" data-plan="live">
+            <div class="plan-header">
+              <div class="plan-icon"><i class="fas fa-home"></i></div>
+              <h3>CULT PASS</h3>
+              <h2>LIVE</h2>
+            </div>
+            <div class="plan-price">
+              <span class="currency">₹</span>
+              <span class="amount">115</span>
+              <span class="period">/month</span>
+            </div>
+            <div class="plan-features">
+              <div class="feature">
+                <i class="fas fa-check"></i>
+                <span>Unlimited at-home workouts</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-check"></i>
+                <span>Celebrity workout sessions</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-check"></i>
+                <span>Meditation & yoga classes</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-check"></i>
+                <span>Goal-based workout plans</span>
+              </div>
+            </div>
+            <button class="plan-cta">Choose Live</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flash Sale Section -->
+    <div id="flash-sale" class="section">
+      <div class="container">
+        <div class="sale-card" data-aos="zoom-in">
+          <div class="sale-content">
+            <div class="sale-badge">
+              <i class="fas fa-bolt"></i>
+              <span>FLASH SALE</span>
+            </div>
+            <h2>Limited Time Offer!</h2>
+            <p>Free ₹2000 Puma voucher + Extra 3 months extension on CULT pass ELITE</p>
+            <div class="countdown-timer">
+              <div class="timer-label">Ends in:</div>
+              <div class="timer-display">
+                <div class="time-unit">
+                  <span id="hours">00</span>
+                  <label>Hours</label>
+                </div>
+                <div class="time-unit">
+                  <span id="minutes">00</span>
+                  <label>Minutes</label>
+                </div>
+                <div class="time-unit">
+                  <span id="seconds">00</span>
+                  <label>Seconds</label>
+                </div>
+              </div>
+            </div>
+            <button class="sale-cta">Claim Offer Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Workout Categories Section -->
+    <div id="workout-categories" class="section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <h2>Explore <span class="gradient-text">Workout Categories</span></h2>
+          <p>Find the perfect workout that matches your fitness goals and preferences</p>
+        </div>
+
+        <div class="category-tabs" data-aos="fade-up" data-aos-delay="200">
+          <button class="tab-btn active" data-category="strength">
+            <i class="fas fa-dumbbell"></i>
+            <span>Strength Training</span>
+          </button>
+          <button class="tab-btn" data-category="cardio">
+            <i class="fas fa-heartbeat"></i>
+            <span>Cardio</span>
+          </button>
+          <button class="tab-btn" data-category="yoga">
+            <i class="fas fa-leaf"></i>
+            <span>Yoga & Flexibility</span>
+          </button>
+          <button class="tab-btn" data-category="dance">
+            <i class="fas fa-music"></i>
+            <span>Dance Fitness</span>
+          </button>
+        </div>
+
+        <div class="category-content">
+          <div id="strength" class="category-pane active">
+            <div class="workout-grid">
+              <div class="workout-card" data-aos="fade-up">
+                <div class="workout-image">
+                  <img src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_300,ar_0.75,q_auto:eco,dpr_2,f_auto,fl_progressive//image/vm/8009b1d0-4f5e-49e1-bc94-c41da6a5bcc1.png" alt="Strength Training" />
+                  <div class="workout-overlay">
+                    <button class="play-btn"><i class="fas fa-play"></i></button>
+                  </div>
+                </div>
+                <div class="workout-info">
+                  <h3>Strength Training</h3>
+                  <p>Build muscle and increase power with progressive resistance training</p>
+                  <div class="workout-stats">
+                    <span><i class="fas fa-clock"></i> 45 min</span>
+                    <span><i class="fas fa-fire"></i> 400 cal</span>
+                    <span><i class="fas fa-signal"></i> Intermediate</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="workout-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="workout-image">
+                  <img src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_300,ar_0.75,q_auto:eco,dpr_2,f_auto,fl_progressive//image/vm/7bf136db-7217-4733-af9f-1bb8a4155a83.png" alt="Weight Training" />
+                  <div class="workout-overlay">
+                    <button class="play-btn"><i class="fas fa-play"></i></button>
+                  </div>
+                </div>
+                <div class="workout-info">
+                  <h3>Weight Training</h3>
+                  <p>Progressive resistance training for maximum muscle development</p>
+                  <div class="workout-stats">
+                    <span><i class="fas fa-clock"></i> 60 min</span>
+                    <span><i class="fas fa-fire"></i> 500 cal</span>
+                    <span><i class="fas fa-signal"></i> Advanced</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="workout-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="workout-image">
+                  <img src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_300,ar_0.75,q_auto:eco,dpr_2,f_auto,fl_progressive//image/vm/7edc94fb-e895-4065-8e56-dabffdd4e4b0.png" alt="Functional Training" />
+                  <div class="workout-overlay">
+                    <button class="play-btn"><i class="fas fa-play"></i></button>
+                  </div>
+                </div>
+                <div class="workout-info">
+                  <h3>Functional Training</h3>
+                  <p>Real-world movement patterns for everyday strength</p>
+                  <div class="workout-stats">
+                    <span><i class="fas fa-clock"></i> 50 min</span>
+                    <span><i class="fas fa-fire"></i> 450 cal</span>
+                    <span><i class="fas fa-signal"></i> Beginner</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="workout-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="workout-image">
+                  <img src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_300,ar_0.75,q_auto:eco,dpr_2,f_auto,fl_progressive//image/vm/09e63111-d407-4d09-89e5-96d978edf2b1.png" alt="CrossFit" />
+                  <div class="workout-overlay">
+                    <button class="play-btn"><i class="fas fa-play"></i></button>
+                  </div>
+                </div>
+                <div class="workout-info">
+                  <h3>CrossFit</h3>
+                  <p>High-intensity functional fitness for total body conditioning</p>
+                  <div class="workout-stats">
+                    <span><i class="fas fa-clock"></i> 55 min</span>
+                    <span><i class="fas fa-fire"></i> 600 cal</span>
+                    <span><i class="fas fa-signal"></i> Advanced</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="cardio" class="category-pane">
+            <div class="workout-grid">
+              <div class="workout-card">
+                <div class="workout-image">
+                  <img src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_400,ar_1.77,q_auto:eco,dpr_1,f_auto,fl_progressive//image/diy/8fbbed5b-37b2-458a-8cd0-775ad5ef1f59" alt="HIIT Training" />
+                  <div class="workout-overlay">
+                    <button class="play-btn"><i class="fas fa-play"></i></button>
+                  </div>
+                </div>
+                <div class="workout-info">
+                  <h3>HIIT Training</h3>
+                  <p>High-intensity interval training for maximum calorie burn</p>
+                  <div class="workout-stats">
+                    <span><i class="fas fa-clock"></i> 30 min</span>
+                    <span><i class="fas fa-fire"></i> 400 cal</span>
+                    <span><i class="fas fa-signal"></i> Intermediate</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="workout-card">
+                <div class="workout-image">
+                  <img src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_400,ar_1.77,q_auto:eco,dpr_1,f_auto,fl_progressive//image/diy/d3783553-6808-4968-ae60-6882667380e1" alt="Cardio Blast" />
+                  <div class="workout-overlay">
+                    <button class="play-btn"><i class="fas fa-play"></i></button>
+                  </div>
+                </div>
+                <div class="workout-info">
+                  <h3>Cardio Blast</h3>
+                  <p>Heart-pumping cardio workout for endurance building</p>
+                  <div class="workout-stats">
+                    <span><i class="fas fa-clock"></i> 40 min</span>
+                    <span><i class="fas fa-fire"></i> 350 cal</span>
+                    <span><i class="fas fa-signal"></i> Beginner</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="yoga" class="category-pane">
+            <div class="workout-grid">
+              <div class="workout-card">
+                <div class="workout-image">
+                  <img src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_400,ar_1.77,q_auto:eco,dpr_1,f_auto,fl_progressive//image/diy/bd02c2f4-bc74-4868-bd93-0590e35b8c14" alt="Hatha Yoga" />
+                  <div class="workout-overlay">
+                    <button class="play-btn"><i class="fas fa-play"></i></button>
+                  </div>
+                </div>
+                <div class="workout-info">
+                  <h3>Hatha Yoga</h3>
+                  <p>Gentle yoga practice focusing on postures and breathing</p>
+                  <div class="workout-stats">
+                    <span><i class="fas fa-clock"></i> 35 min</span>
+                    <span><i class="fas fa-fire"></i> 150 cal</span>
+                    <span><i class="fas fa-signal"></i> Beginner</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="dance" class="category-pane">
+            <div class="workout-grid">
+              <div class="workout-card">
+                <div class="workout-image">
+                  <img src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_400,ar_1.77,q_auto:eco,dpr_1,f_auto,fl_progressive//image/diy/d3783553-6808-4968-ae60-6882667380e1" alt="Dance Fitness" />
+                  <div class="workout-overlay">
+                    <button class="play-btn"><i class="fas fa-play"></i></button>
+                  </div>
+                </div>
+                <div class="workout-info">
+                  <h3>Dance Fitness Express</h3>
+                  <p>Fun and energetic dance workout for all fitness levels</p>
+                  <div class="workout-stats">
+                    <span><i class="fas fa-clock"></i> 30 min</span>
+                    <span><i class="fas fa-fire"></i> 300 cal</span>
+                    <span><i class="fas fa-signal"></i> Beginner</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gym Locator Section -->
+    <div id="gym-locator" class="section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <h2>Find <span class="gradient-text">Gyms Near You</span></h2>
+          <p>Discover premium fitness centers in your area</p>
+        </div>
+
+        <div class="locator-content" data-aos="fade-up" data-aos-delay="200">
+          <div class="map-container">
+            <div class="map-placeholder">
+              <div class="map-overlay">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Searching for Centers</h3>
+                <p>Finding the best gyms in your location...</p>
+              </div>
+              <iframe 
+                id="gym-map" 
+                width="100%" 
+                height="400" 
+                frameborder="0" 
+                scrolling="no" 
+                marginheight="0" 
+                marginwidth="0">
+              </iframe>
+            </div>
+          </div>
+          
+          <div class="gym-info">
+            <div class="info-card">
+              <div class="info-icon">
+                <i class="fas fa-dumbbell"></i>
+              </div>
+              <h3>Premium Equipment</h3>
+              <p>State-of-the-art fitness equipment from leading brands</p>
+            </div>
+            
+            <div class="info-card">
+              <div class="info-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <h3>Expert Trainers</h3>
+              <p>Certified fitness professionals to guide your journey</p>
+            </div>
+            
+            <div class="info-card">
+              <div class="info-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <h3>Flexible Hours</h3>
+              <p>Open 24/7 to fit your busy schedule</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Success Stories Section -->
+    <div id="success-stories" class="section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <h2>Success <span class="gradient-text">Stories</span></h2>
+          <p>Real transformations from our community members</p>
+        </div>
+
+        <div class="stories-grid" data-aos="fade-up" data-aos-delay="200">
+          <div class="story-card">
+            <div class="story-image">
+              <img src="https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_1440,ar_1738:763/dpr_2/image/vm/a5077452-0ba1-469f-a9ab-3eb6429de7c2.png" alt="Success Story 1" />
+              <div class="story-overlay">
+                <button class="story-play-btn">
+                  <i class="fas fa-play"></i>
+                </button>
+              </div>
+            </div>
+            <div class="story-content">
+              <h3>Lost 25kg in 6 months</h3>
+              <p>"Cult.fit transformed my life completely. The trainers are amazing and the community support is incredible!"</p>
+              <div class="story-author">
+                <div class="author-info">
+                  <span class="author-name">Priya Sharma</span>
+                  <span class="author-location">Mumbai</span>
+                </div>
+                <div class="story-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="story-card">
+            <div class="story-image">
+              <img src="https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_1440,ar_1440:240/dpr_2/image/vm/8d058e84-f098-4129-b107-dc81c19af2f1.png" alt="Success Story 2" />
+              <div class="story-overlay">
+                <button class="story-play-btn">
+                  <i class="fas fa-play"></i>
+                </button>
+              </div>
+            </div>
+            <div class="story-content">
+              <h3>Built muscle & confidence</h3>
+              <p>"The variety of workouts and expert guidance helped me achieve my fitness goals faster than I imagined."</p>
+              <div class="story-author">
+                <div class="author-info">
+                  <span class="author-name">Rahul Verma</span>
+                  <span class="author-location">Delhi</span>
+                </div>
+                <div class="story-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="story-card">
+            <div class="story-image">
+              <img src="https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_1440,ar_1440:240/dpr_2/image/vm/7f7af73c-3ee3-46c1-9129-0df18dbb02ac.png" alt="Success Story 3" />
+              <div class="story-overlay">
+                <button class="story-play-btn">
+                  <i class="fas fa-play"></i>
+                </button>
+              </div>
+            </div>
+            <div class="story-content">
+              <h3>Improved mental health</h3>
+              <p>"Yoga and meditation classes helped me find inner peace and balance in my hectic lifestyle."</p>
+              <div class="story-author">
+                <div class="author-info">
+                  <span class="author-name">Anita Desai</span>
+                  <span class="author-location">Bangalore</span>
+                </div>
+                <div class="story-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Community Section -->
+    <div id="community-section" class="section">
+      <div class="container">
+        <div class="community-content" data-aos="fade-up">
+          <div class="community-text">
+            <h2>Join the <span class="gradient-text">Cult Community</span></h2>
+            <p>Be part of India's largest fitness community. Connect with like-minded individuals, share your journey, and get motivated every day.</p>
+            <div class="community-stats">
+              <div class="community-stat">
+                <span class="stat-number">1M+</span>
+                <span class="stat-label">Community Members</span>
+              </div>
+              <div class="community-stat">
+                <span class="stat-number">50K+</span>
+                <span class="stat-label">Daily Check-ins</span>
+              </div>
+              <div class="community-stat">
+                <span class="stat-number">100K+</span>
+                <span class="stat-label">Success Stories</span>
+              </div>
+            </div>
+            <button class="community-cta" onclick="joinCommunity()">
+              <i class="fab fa-facebook"></i>
+              <span>Join Facebook Community</span>
+            </button>
+          </div>
+          <div class="community-image">
+            <img src="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_842,ar_1.2,q_auto:eco,dpr_2,f_auto,fl_progressive/image/test/sku-card-widget/black1.png" alt="Community" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Workout Modal -->
+    <div id="workout-modal" class="modal">
+      <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <div class="modal-header">
+          <h2>Workout Preview</h2>
+        </div>
+        <div class="modal-body">
+          <div class="video-container">
+            <video controls width="100%">
+              <source src="https://cdn-media.cure.fit/video/cflive_pack_page_mock_v2_revised.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="modal-info">
+            <h3>Experience Our Training</h3>
+            <p>Get a glimpse of our world-class training sessions and see why millions choose Cult.fit for their fitness journey.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({ 
+        offset: 100, 
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true
+      });
+    </script>
+    <script src="../scripts/fitness.js" type="module"></script>
+  </body>
 </html>
-<script type="module">
-  document.querySelector("#footer").innerHTML = `<div id="Nikfooter">
-    <div id="footerd1">
-        <img id="footerd1I" src="https://static.cure.fit/assets/images/cult-logo-white.svg" alt="">
-        <p id="footerd1P">At cult.fit, we make group workouts fun, daily food healthy & tasty, mental fitness easy
-            with yoga & meditation, and
-            medical & lifestyle care hassle-free. #BeBetterEveryDay</p>
-    </div>
-    <div id="footerd2">
-        <p style="margin-top: 10%;" class="nikContact">CONTACT US</p>
-        <p class="nikContact">BLOG</p>
-        <p class="nikContact">PARTNER.FIT</p>
-        <p class="nikContact">TALKS</p>
-        <P class="nikContact">CAREERS</P>
-    </div>
-    <div id="footerd3">
-        <p class="nikContact1">CULTFIT FOR BUSINESSES</p>
-        <p class="nikContact1">CULT FRANCHISE</p>
-        <p class="nikContact1">CULT PASS NETWORK</p>
-        <P class="nikContact1">CORPORATE PARTNERSHIPS</P>
-    </div>
-    <div id="footerd4"></div>
-
-    <!-- app store part -->
-    <div id="footerd4">
-        <a href="https://apps.apple.com/us/app/cure-fit/id1217794588">
-            <img style="margin-left: 25%;margin-top: 20%;" src="https://static.cure.fit/assets/images/app-store.svg"
-                alt="">
-        </a>
-        <a href="https://play.google.com/store/apps/details?id=fit.cure.android">
-            <img style="margin-left: 25%;margin-top: 10%;"
-                src="https://static.cure.fit/assets/images/play-store.svg" alt="">
-        </a>
-    </div>
-</div>
-<div style="display: flex;color: whitesmoke;margin-top: -50px;" id="smallContact">
-    <p style="margin-left: 5%;">CONTACT US</p>
-    <p style="margin-left: 5%;">FAQ</p>
-    <p style="margin-left: 5%;">Terms & conditions</p>
-    <p style="margin-left: 5%;">Privacy Policy</p>
-    <p style="margin-left: 5%;">Refund Policy</p>
-    <a href="https://www.facebook.com/cultfitofficial">
-        <img style="margin-left: 300px;margin-top: 20px;"
-            src="https://static.cure.fit/assets/images/facebook_icon_white.svg" alt="">
-    </a>
-    <a href="https://twitter.com/cultfitOfficial">
-        <img style="margin-left: 50px;margin-top: 20px;"
-            src="https://static.cure.fit/assets/images/twitter_icon_white.svg" alt="">
-    </a>
-    <a href="https://www.instagram.com/cultfitOfficial/">
-        <img style="margin-left: 50px;margin-top: 20px;"
-            src="https://static.cure.fit/assets/images/instagram_icon_white.svg" alt="">
-    </a>
-    <a href="https://www.youtube.com/channel/UCSE72IaHOL-1Tv-m3JHE4Cg">
-        <img style="margin-left: 50px;margin-top: 20px;"
-            src="https://static.cure.fit/assets/images/youtube_icon_white_1.svg" alt="">
-    </a>
-</div>`;
-  let addSecondComponents = () => {
-    let second = document.querySelector("#second");
-    second.innerHTML = ` <div id="second_1">
-            <p>Cultpass</p>
-            <h1>ELITE</h1>
-            <p>Starting at ₹1178 / month</p>
-        </div>
-        <div id="second_2">
-            <a style="text-decoration:none" href="tryForFree.html"><h4 style="color:crimson">TRY FOR FREE</h4></a>
-        </div>
-        <div id="second_3">
-            <p>Cultpass</p>
-            <h1>LIVE</h1>
-            <p>Starting at ₹115 / month</p>
-        </div>`;
-  };
-  let arr = [];
-  let str1 = `  <div id="third" >
-            <div id="third_1">
-                <h1>FLASH SALE | ONLY TODAY</h1>
-                <h4>Free ₹2000 Puma voucher + Extra 3 months extension | On CULT pass ELITE</h4>
-                
-            </div>
-                <div class="timer">
-                   <h2>-------- Ends in--------</h2>
-                    <h1 id="demo"></h1>
-                </div>
-                </div>`;
-  let str2 = `  <div id="third" style="background-color:#db6aae">
-            <div id="third_1">
-                <h1>Upto Four months extension Free</h1>
-                <h4> |On CULT pass LIVE</h4>
-                
-            </div>
-                <div class="timer">
-                   <h2>-------- Ends in--------</h2>
-                    <h1 id="demo"></h1>
-                </div>
-                </div>`;
-  let str3 = `  <div id="third" style="background-color:#5C4033" >
-            <div id="third_1">
-                <h1>AMAZON VOUCHER + 3 MONTHS EXTENSION</h1>
-                <h4> On CULT TRANSFORM</h4>
-                
-            </div>
-                <div class="timer">
-                   <h2>-------- Ends in--------</h2>
-                    <h1 id="demo"></h1>
-                </div>
-                </div>`;
-  arr.push(str2, str3, str1);
-  let third_mother = document.querySelector("#third_mother");
-
-  let i = 0;
-
-  function slideshow() {
-    third_mother.innerHTML = null;
-    if (i < 3) {
-      third_mother.innerHTML = arr[i];
-    }
-    if (i == 2) {
-      i = -1;
-    }
-    i++;
-  }
-
-  let z = setInterval(slideshow, 5000);
-  // clearInterval(z);
-
-  setTimeout(addSecondComponents, 5000);
-  import { navbar, getLocation } from "../scripts/navbar.js";
-  window.onload = getLocation();
-  document.querySelector("#navbar").innerHTML = navbar();
-  function getlocation() {
-    navigator.geolocation.getCurrentPosition(success);
-    function success(pos) {
-      const crd = pos.coords;
-      //
-
-      append(crd.latitude, crd.longitude);
-    }
-  }
-  getlocation();
-  function append(lat, long) {
-    let map = `https://maps.google.com/maps?q=${lat},${long}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
-
-    document.querySelector("#gmap_canvas").src = map;
-  }
-  let seventh = document.querySelectorAll("#seventh img");
-  seventh.forEach((el) => {
-    el.addEventListener("click", () => {
-      window.location.href = "explore.html";
-    });
-  });
-
-  let subeighthArr = [];
-  let subeighthArr_1 =
-    "https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_842,ar_1.2,q_auto:eco,dpr_2,f_auto,fl_progressive/image/test/sku-card-widget/black1.png";
-  let subeighthArr_2 =
-    "https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_842,ar_1.2,q_auto:eco,dpr_2,f_auto,fl_progressive/image/test/sku-card-widget/black2.png";
-  subeighthArr.push(subeighthArr_1, subeighthArr_2);
-  let subeighthimg = document.createElement("img");
-
-  let subeighth = document.querySelector("#subeighth");
-
-  let j = 0;
-  let slide = () => {
-    if (j < 2) {
-      subeighthimg.src = subeighthArr[j];
-      subeighth.append(subeighthimg);
-    }
-    if (j == 2) {
-      j = -1;
-    }
-    j++;
-  };
-  setInterval(slide, 3000);
-  // ................................................................................................
-  let subninthArr = [];
-  let subninthArr_1 =
-    "https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_842,ar_1.2,q_auto:eco,dpr_1,f_auto,fl_progressive/image/test/sku-card-widget/gold2.png";
-  let subninthArr_2 =
-    "https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_842,ar_1.2,q_auto:eco,dpr_1,f_auto,fl_progressive/image/test/sku-card-widget/gold1.png";
-  subninthArr.push(subninthArr_1, subninthArr_2);
-  let subninthimg = document.createElement("img");
-
-  let subninth = document.querySelector("#subninth");
-
-  let k = 0;
-  let nslide = () => {
-    if (k < 2) {
-      subninthimg.src = subninthArr[k];
-      subninth.append(subninthimg);
-    }
-    if (k == 2) {
-      k = -1;
-    }
-    k++;
-  };
-  setInterval(nslide, 3000);
-  function buyNow() { }
-</script>
-<script src="../scripts/timer.js"></script>
