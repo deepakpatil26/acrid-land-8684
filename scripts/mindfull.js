@@ -1,205 +1,390 @@
-// <----------NavbarDropDown----------------->
-var spet = document.getElementById("spet");
-var toggle = false;
-//  <-----------------Eatfit dropDown topleft------------------>
-spet.addEventListener("click", function () {
-  var headDropDown = document.getElementById("headDropDown");
-  var droparrow = document.getElementById("dropdown-arrow");
+/**
+ * Mindfull.js - Main JavaScript for Mind Page
+ * Handles UI interactions and content rendering for the Mind section
+ */
 
-  if (toggle) {
-    headDropDown.style.display = "none";
-    toggle = false;
-    droparrow.style.transform = "rotate(" + 180 + "deg)";
-  } else {
-    headDropDown.style.display = "flex";
-    toggle = true;
-    droparrow.style.transform = "rotate(" + 0 + "deg)";
+// Constants
+const MEDITATION_PROGRAMS = {
+  featured: [
+    {
+      id: 'covid-recovery',
+      img: 'https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_212,ar_0.82,c_fill/dpr_2/image/diy/00a5f2c0-5e37-45fb-b869-f880d17d5763',
+      name: 'Covid Recovery',
+      description: 'Gentle stretches and meditation to help recover from physical and mental stress caused by COVID-19.',
+      duration: '30 min',
+      level: 'All Levels'
+    },
+    {
+      id: 'running-programs',
+      img: 'https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_212,ar_0.82,c_fill/dpr_2/image/diy/8e929664-cd36-4b5d-8c6c-ca135c678a84',
+      name: 'Running Programs',
+      description: 'Enhance your running performance with guided running programs.',
+      duration: '20-45 min',
+      level: 'Beginner to Advanced'
+    },
+    {
+      id: 'quick-meditation',
+      img: 'https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_212,ar_0.82,c_fill/dpr_2/image/diy/f5e214b7-243b-4fec-b821-8e6400d49213',
+      name: '5 Min Meditation',
+      description: 'Quick meditation sessions to reduce stress and anxiety.',
+      duration: '5 min',
+      level: 'All Levels'
+    }
+  ],
+  sleep: [
+    {
+      id: 'sleep-stories',
+      img: 'https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_212,ar_0.82,c_fill/dpr_2/image/diy/936125f4-ffc8-4e52-943b-efe9d068b758',
+      name: 'Sleep Stories',
+      description: 'Relaxing stories to help you fall into a peaceful sleep.',
+      duration: '15-30 min',
+      level: 'All Ages'
+    },
+    {
+      id: 'yoga-nidra',
+      img: 'https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_212,ar_0.82,c_fill/dpr_2/image/diy/94cf3985-f59e-48b3-88b3-fb1fef54d39a',
+      name: '30 Minutes Yoga Nidra',
+      description: 'Deep relaxation practice for complete mind-body restoration.',
+      duration: '30 min',
+      level: 'All Levels'
+    }
+  ],
+  focus: [
+    {
+      id: 'focus-meditation',
+      img: 'https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_212,ar_0.82,c_fill/dpr_2/image/diy/c86a5d9a-e631-4f51-83eb-5231a27335ac.jpg',
+      name: 'Focus Meditation',
+      description: 'Improve concentration and attention span with guided focus techniques.',
+      duration: '10-20 min',
+      level: 'All Levels'
+    },
+    {
+      id: 'stress-relief',
+      img: 'https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_212,ar_0.82,c_fill/dpr_2/image/diy/8acb1c22-4cde-45ae-b2f9-14042fdd408c.jpg',
+      name: 'Beat the Stress Program',
+      description: 'Techniques to manage and reduce stress in daily life.',
+      duration: '15-30 min',
+      level: 'All Levels'
+    }
+  ]
+};
+
+// DOM Elements
+const dom = {
+  navbarToggle: null,
+  dropdownMenu: null,
+  dropdownArrow: null,
+  meditationContainer: null,
+  loadingIndicator: null,
+};
+
+// State
+const state = {
+  isMenuOpen: false,
+  isLoading: false,
+  activeTab: 'featured',
+  favorites: new Set()
+};
+
+/**
+ * Initialize the application
+ */
+function init() {
+  try {
+    // Cache DOM elements
+    cacheDomElements();
+
+    // Set up event listeners
+    setupEventListeners();
+
+    // Load initial content
+    loadInitialContent();
+
+    console.log('Mind page initialized successfully');
+  } catch (error) {
+    console.error('Error initializing mind page:', error);
+    showError('Failed to initialize page. Please refresh to try again.');
   }
-});
-// <------>
+}
 
-var totalimages1 = [
-  {
-    img: "https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_212,ar_0.82,c_fill/dpr_2/image/diy/00a5f2c0-5e37-45fb-b869-f880d17d5763",
-    name: "Covid Recovery",
-    dis: "It's time to say goodbye to the physical and mental stress brought upon by this virus. This program focuses on bringing stability back into the body through gentle stretches and a sense of peace into the mind through deep meditation. The sessions in these series have low-intensity movements that do not challenge the lung capacity and help reset the body for recovery.",
-  },
+/**
+ * Cache frequently used DOM elements
+ */
+function cacheDomElements() {
+  dom.navbarToggle = document.getElementById('spet');
+  dom.dropdownMenu = document.getElementById('headDropDown');
+  dom.dropdownArrow = document.getElementById('dropdown-arrow');
+  dom.meditationContainer = document.querySelector('.meditation-programs');
+  dom.loadingIndicator = document.getElementById('loading-indicator');
+}
 
-  {
-    img: "https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_212,ar_0.82,c_fill/dpr_2/image/diy/8e929664-cd36-4b5d-8c6c-ca135c678a84",
-    name: "Running Programs",
-    dis: "Running Programs",
-  },
+/**
+ * Set up event listeners
+ */
+function setupEventListeners() {
+  // Navbar toggle
+  if (dom.navbarToggle) {
+    dom.navbarToggle.addEventListener('click', toggleNavbar);
+  }
 
-  {
-    img: "https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_212,ar_0.82,c_fill/dpr_2/image/diy/f5e214b7-243b-4fec-b821-8e6400d49213",
-    name: "5 Min Meditation",
-    dis: "Panic? Anxiety? We have you all covered with these short 5 minute meditations. Dive in!",
-  },
+  // Tab navigation
+  const tabs = document.querySelectorAll('.tab');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', handleTabClick);
+  });
 
-  {
-    img: "https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_212,ar_0.82,c_fill/dpr_2/image/diy/936125f4-ffc8-4e52-943b-efe9d068b758",
-    name: "Sleep Stories",
-    dis: "Say goodbye to sleepless nights! Created by Dr.Shyam Bhat, these stories will help you relax to drift into a peaceful and deep sleep.",
-  },
+  // Favorite button
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('.favorite-btn')) {
+      const programId = e.target.closest('.favorite-btn').dataset.id;
+      toggleFavorite(programId);
+    }
+  });
+}
 
-  {
-    img: "https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_212,ar_0.82,c_fill/dpr_2/image/diy/c86a5d9a-e631-4f51-83eb-5231a27335ac.jpg",
-    name: "Focus Meditation",
-    dis: "It's the present that matters! Created by Dr.Shyam Bhat, this meditation series will help you bring your attention to the present moment by improving focus and concentration.",
-  },
+/**
+ * Toggle navbar dropdown
+ */
+function toggleNavbar() {
+  try {
+    state.isMenuOpen = !state.isMenuOpen;
 
-  {
-    img: "https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_212,ar_0.82,c_fill/dpr_2/image/diy/8acb1c22-4cde-45ae-b2f9-14042fdd408c.jpg    ",
-    name: "Beat the Stress Program",
-    dis: "Say no to stress with this series! The various packs will help you manage stressful thoughts and feel more relaxed.    ",
-  },
+    if (dom.dropdownMenu) {
+      dom.dropdownMenu.style.display = state.isMenuOpen ? 'flex' : 'none';
+    }
 
-  {
-    img: "https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_212,ar_0.82,c_fill/dpr_2/image/diy/94cf3985-f59e-48b3-88b3-fb1fef54d39a    ",
-    name: "30 Minutes Yoga Nidra",
-    dis: "This will be a half an hour audio-led Yoga NIdra class by Divya Rolla. Yoga Nidra is a powerful practise which has a profound effect on your body and mind. This practise will relax a person on all 3 levels physically, mentally and emotionally. It is one of the most easily accessible ways to reduce stress.",
-  },
+    if (dom.dropdownArrow) {
+      dom.dropdownArrow.style.transform = state.isMenuOpen
+        ? 'rotate(180deg)'
+        : 'rotate(0deg)';
+    }
+  } catch (error) {
+    console.error('Error toggling navbar:', error);
+  }
+}
 
-  {
-    img: "https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_212,ar_0.82,c_fill/dpr_2/image/diy/3f6bf321-5c8d-4f12-adbf-5dd60b4f3fec    ",
-    name: "Difficult Emotions",
-    dis: "This pack by Prasiddha Ramarao addresses the fact that strong emotions do not have to be scary. Emotions often tell us that we need to take care of ourselves, so denying or suppressing them harms rather than helps us. This series explores six common emotions _ often seen as difficult or troublesome _ utilising different techniques to work through them. Please",
-  },
+/**
+ * Handle tab click events
+ * @param {Event} event - The click event
+ */
+function handleTabClick(event) {
+  try {
+    const tabId = event.currentTarget.dataset.tab;
+    if (!tabId) return;
 
-  {
-    img: "https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_212,ar_0.82,c_fill/dpr_2/image/diy/3d8bf8ac-64bf-4fc0-80b0-dc64ba6a831e    ",
-    name: "Relationship Healing",
-    dis: "This meditation pack on Relationships created by Spiritual Coach ModMonk Anshul will take you on a journey of bonding with yourself and will help in building a bridge of love, forgiveness, and acceptance with everyone around you.    ",
-  },
+    // Update active tab
+    state.activeTab = tabId;
 
-  {
-    img: "https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_212,ar_0.82,c_fill/dpr_2/image/diy/a5748b24-ddea-429e-8dea-51fa60c258c6",
-    name: "Walking Meditation",
-    dis: "A guide to walking mindfully, transforming the simple act of walking by staying present in the moment- created by Dr Shyam Bhat    ",
-  },
+    // Update UI
+    updateActiveTabIndicator(tabId);
+    renderPrograms(tabId);
+  } catch (error) {
+    console.error('Error handling tab click:', error);
+  }
+}
 
-  {
-    img: "https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_212,ar_0.82,c_fill/dpr_2/image/diy/3aadf32b-c5a4-422a-b648-fa715eb409ed.jpg",
-    name: "Yoga - Endurance",
-    dis: "This pack is a capsulated practice to building physical endurance through a flow-based approach to yoga asanas. One will see improved physical and mental endurance when practiced regularly    ",
-  },
-];
+/**
+ * Update active tab indicator
+ * @param {string} tabId - ID of the active tab
+ */
+function updateActiveTabIndicator(tabId) {
+  const tabs = document.querySelectorAll('.tab');
+  tabs.forEach(tab => {
+    if (tab.dataset.tab === tabId) {
+      tab.classList.add('active');
+    } else {
+      tab.classList.remove('active');
+    }
+  });
+}
 
-var totalimages2 = [
-  {
-    img: "https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_212,ar_0.82,c_fill/dpr_2/image/diy/2688cb1e-3533-484e-b2dc-e83017199315.jpg",
-    name: "Meditation - Foundation",
-    dis: "Get started with meditation! This series will guide you through the basic skills of meditation and help you explore mindfulness.",
-  },
+/**
+ * Render programs for the active tab
+ * @param {string} category - Program category to render
+ */
+function renderPrograms(category) {
+  if (!dom.meditationContainer) return;
 
-  {
-    img: "https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_212,ar_0.82,c_fill/dpr_2/image/diy/54117647-b2c9-4800-9370-18fb650fe4ba",
-    name: "Yoga- Pranayama",
-    dis: "This Pranayama series contains breath practices which have the potential to effect the gross body.",
-  },
-  {
-    img: "https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_212,ar_0.82,c_fill/dpr_2/image/diy/e93f2cc8-7572-4559-ba11-6642e9dc98f5.jpg",
-    name: "Stress Reduction Meditation",
-    dis: "Say no to stress with this series! The various packs created by Dr. Shyam Bhat will help you manage stressful thoughts and feel more relaxed.",
-  },
-  {
-    img: "https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_212,ar_0.82,c_fill/dpr_2/image/diy/5992b24c-f970-4beb-a4fe-8f0e265b67d9",
-    name: " 30 Minutes Pranayama",
-    dis: " Rolla. Breath is life. Most people breathe using a small portion of their lung capacity. Regular practise of these Pranayama sessions will help the practitioner develop a healthy breathing habit which will in-turn help one achieve peace of mind and",
-  },
-  {
-    img: "https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_212,ar_0.82,c_fill/dpr_2/image/diy/b1bc9e1e-22f2-4e93-90ed-73703dcc973d",
-    name: " Yoga for Relaxation and Stress Relief",
-    dis: "A series which will guide you through asana, pranayama and savasana addressing the body, mind and breath",
-  },
-  {
-    img: "https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_212,ar_0.82,c_fill/dpr_2/image/diy/83a5a31b-68f8-4acd-b6ff-d7bb8430ecd5",
-    name: " Meditation for Kids",
-    dis: "his series led by Prasiddha Ramarao would serve as a wonderful start for your child's meditation journey. The language is simple and engaging and something that would captures a child's imagination",
-  },
-  {
-    img: "https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_212,ar_0.82,c_fill/dpr_2/image/diy/95593272-76b9-4776-bd98-23934db3fc1b",
-    name: "Falling into Sleep",
-    dis: "If you've been struggling to catch some shut eye lately, meditating before bed might help. Insomnia is an unhealthy condition that plagues far too many people. Our radical lifestyle changes have significantly altered our sleep patterns, turning many of us into daytime zombies. Meditation to the rescue! Sleep meditation is a powerful tool that can help us fall",
-  },
-  {
-    img: "https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_212,ar_0.82,c_fill/dpr_2/image/diy/57ee03e5-6515-4892-9729-718edbc7505f",
-    name: "Saying Yes to Life",
-    dis: "The meditation sessions in this pack helps us take a closer look at our default responses to life's invitations for growth. Saying “yes” to life means a lot of things in a lot of different circumstances. The basic thing that unifies all of these circumstances is to take a risk in the direction of opening oneself up and being vulnerable — to not knowing, to not being able to control an outcome. It means trusting yourself and",
-  },
-  {
-    img: "https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_212,ar_0.82,c_fill/dpr_2/image/diy/206bf7fd-de2b-4ab8-9783-6b94acbab483.jpg",
-    name: " Sleep Meditation",
-    dis: "Say goodbye to sleepless nights! Created by Dr.Shyam Bhat, this series will help you relax to drift into a peaceful and deep sleep.",
-  },
-  {
-    img: "https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_212,ar_0.82,c_fill/dpr_2/image/diy/2e8dffed-4d9c-4eed-9bad-f5b577ab1fef",
-    name: "7 days of Happiness",
-    dis: "Spiritual coach ModMonk Anshul guides you through a beautiful journey of creating and enhancing your inner peace and happiness. Being happy is the basic right of every individual as we are innately happy beings, we just forget how to access that feeling and get stuck in a maze that makes us feel falsely worried, lonely, and unhappy. This pack is carefully crafted to help you climb the ladder of your inner subconscious to access",
-  },
-  {
-    img: "https://cdn-images.cure.fit/www-curefit-com/image/upload/fl_progressive,f_auto,q_auto:eco,w_212,ar_0.82,c_fill/dpr_2/image/diy/7fc199ea-0457-4d03-bd93-add35aa3a64c",
-    name: "Meditation - Yoga Nidra",
-    dis: "This series uses the pre-meditative practices of Yoga Nidra to help deepen relaxation. You are bound to wake up refreshed!",
-  },
-];
+  const programs = MEDITATION_PROGRAMS[category] || [];
 
-let cards = document.querySelector(".card1");
+  if (programs.length === 0) {
+    dom.meditationContainer.innerHTML = '<p class="no-programs">No programs found in this category.</p>';
+    return;
+  }
 
-totalimages1.forEach(function (items) {
-  let dis1 = document.createElement("div");
-  dis1.classList.add("dis1");
+  const html = programs.map(program => createProgramCard(program)).join('');
+  dom.meditationContainer.innerHTML = html;
 
-  let div1 = document.createElement("div");
+  // Add lazy loading to images
+  const lazyImages = document.querySelectorAll('.program-card img[data-src]');
+  lazyLoadImages(lazyImages);
+}
 
-  let div2 = document.createElement("div");
+/**
+ * Create HTML for a program card
+ * @param {Object} program - Program data
+ * @returns {string} HTML string for the program card
+ */
+function createProgramCard(program) {
+  const isFavorite = state.favorites.has(program.id);
 
-  let img = document.createElement("img");
-  img.src = items.img;
-  img.classList.add("imgS");
+  return `
+    <div class="program-card" data-id="${program.id}">
+      <div class="program-image">
+        <img 
+          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E" 
+          data-src="${program.img}" 
+          alt="${program.name}" 
+          loading="lazy"
+        >
+        <button class="favorite-btn ${isFavorite ? 'active' : ''}" 
+                data-id="${program.id}" 
+                aria-label="${isFavorite ? 'Remove from favorites' : 'Add to favorites'}">
+          <i class="${isFavorite ? 'fas' : 'far'} fa-heart"></i>
+        </button>
+        <span class="duration">${program.duration}</span>
+      </div>
+      <div class="program-details">
+        <h3>${program.name}</h3>
+        <p>${program.description}</p>
+        <div class="program-meta">
+          <span class="level">${program.level}</span>
+          <button class="btn-start" data-id="${program.id}">Start</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
 
-  div1.append(img);
+/**
+ * Toggle favorite status of a program
+ * @param {string} programId - ID of the program
+ */
+function toggleFavorite(programId) {
+  try {
+    if (state.favorites.has(programId)) {
+      state.favorites.delete(programId);
+    } else {
+      state.favorites.add(programId);
+    }
 
-  let tit = document.createElement("h2");
-  tit.innerText = items.name;
+    // Update UI
+    const favoriteBtn = document.querySelector(`.favorite-btn[data-id="${programId}"]`);
+    if (favoriteBtn) {
+      const icon = favoriteBtn.querySelector('i');
+      favoriteBtn.classList.toggle('active');
+      icon.classList.toggle('far');
+      icon.classList.toggle('fas');
 
-  let dis = document.createElement("p");
-  dis.innerText = items.dis;
-  dis.style.fontSize = "13px";
+      // Update aria-label
+      const isFavorite = favoriteBtn.classList.contains('active');
+      favoriteBtn.setAttribute('aria-label', isFavorite ? 'Remove from favorites' : 'Add to favorites');
+    }
 
-  div2.append(tit, dis);
+    // In a real app, you would save to localStorage or API here
+    // saveFavoritesToStorage();
+  } catch (error) {
+    console.error('Error toggling favorite:', error);
+  }
+}
 
-  dis1.append(div1, div2);
+/**
+ * Lazy load images
+ * @param {NodeList} images - List of image elements to lazy load
+ */
+function lazyLoadImages(images) {
+  if (!('IntersectionObserver' in window)) {
+    // Fallback for browsers that don't support IntersectionObserver
+    images.forEach(img => {
+      if (img.dataset.src) {
+        img.src = img.dataset.src;
+        img.removeAttribute('data-src');
+      }
+    });
+    return;
+  }
 
-  cards.append(dis1);
-});
+  const imageObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        if (img.dataset.src) {
+          img.src = img.dataset.src;
+          img.removeAttribute('data-src');
+          observer.unobserve(img);
+        }
+      }
+    });
+  });
 
-let cards2 = document.querySelector(".card2");
-totalimages2.forEach(function (items) {
-  let dis2 = document.createElement("div");
-  dis2.classList.add("dis2");
+  images.forEach(img => imageObserver.observe(img));
+}
 
-  let div1 = document.createElement("div");
+/**
+ * Show loading state
+ * @param {boolean} show - Whether to show loading state
+ */
+function setLoading(show) {
+  state.isLoading = show;
+  if (dom.loadingIndicator) {
+    dom.loadingIndicator.style.display = show ? 'block' : 'none';
+  }
+}
 
-  let div2 = document.createElement("div");
+/**
+ * Show error message
+ * @param {string} message - Error message to display
+ */
+function showError(message) {
+  // In a real app, you would show this in the UI
+  console.error(message);
 
-  let img = document.createElement("img");
-  img.src = items.img;
-  img.classList.add("imgS");
+  const errorContainer = document.getElementById('error-container');
+  if (errorContainer) {
+    errorContainer.textContent = message;
+    errorContainer.style.display = 'block';
 
-  div1.append(img);
+    // Hide after 5 seconds
+    setTimeout(() => {
+      errorContainer.style.display = 'none';
+    }, 5000);
+  }
+}
 
-  let tit = document.createElement("h2");
-  tit.innerText = items.name;
+/**
+ * Load initial content
+ */
+function loadInitialContent() {
+  // Show loading state
+  setLoading(true);
 
-  let dis = document.createElement("p");
-  dis.innerText = items.dis;
-  dis.style.fontSize = "13px";
+  try {
+    // In a real app, you might fetch this from an API
+    setTimeout(() => {
+      renderPrograms(state.activeTab);
+      setLoading(false);
+    }, 500);
+  } catch (error) {
+    console.error('Error loading content:', error);
+    showError('Failed to load content. Please try again later.');
+    setLoading(false);
+  }
+}
 
-  div2.append(tit, dis);
+// Initialize the app when the DOM is fully loaded
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
 
-  dis2.append(div1, div2);
-
-  cards2.append(dis2);
-});
+// Export for testing or other modules
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    init,
+    toggleNavbar,
+    toggleFavorite,
+    renderPrograms,
+    MEDITATION_PROGRAMS
+  };
+}
